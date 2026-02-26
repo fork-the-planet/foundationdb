@@ -596,7 +596,7 @@ int main(int argc, char** argv) {
 							conffile = confpath.substr(confdir.size());
 
 							// Remove all the old watches
-							for (auto wd : additional_watch_wds) {
+							for (const auto& wd : additional_watch_wds) {
 								if (inotify_rm_watch(ifd, wd.first) < 0) {
 									// log_err("inotify_rm_watch", errno, "Unable to remove symlink watch %d",
 									// wd.first); exit(1);

@@ -661,7 +661,8 @@ public:
 	explicit LineageReference(ActorLineage* ptr) : Reference<ActorLineage>(ptr), actorName_(""), allocated_(false) {}
 	LineageReference(const LineageReference& r) : Reference<ActorLineage>(r), actorName_(""), allocated_(false) {}
 	LineageReference(LineageReference&& r)
-	  : Reference<ActorLineage>(std::forward<LineageReference>(r)), actorName_(r.actorName_), allocated_(r.allocated_) {
+	  : Reference<ActorLineage>(r.getPtr()), actorName_(r.actorName_), allocated_(r.allocated_) {
+		r.setPtrUnsafe(nullptr);
 		r.actorName_ = "";
 		r.allocated_ = false;
 	}
