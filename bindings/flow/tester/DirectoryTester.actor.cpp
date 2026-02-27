@@ -86,7 +86,7 @@ std::string pathToString(IDirectory::Path const& path) {
 
 IDirectory::Path combinePaths(IDirectory::Path const& path1, IDirectory::Path const& path2) {
 	IDirectory::Path outPath(path1.begin(), path1.end());
-	for (auto p : path2) {
+	for (const auto& p : path2) {
 		outPath.push_back(p);
 	}
 
